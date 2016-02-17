@@ -1,0 +1,11 @@
+sudo: false
+env:
+  - TZ=Asia/Tokyo
+language: node_js
+node_js:
+  - "stable"
+  - "5"
+  - "4"
+script:
+  - npm test
+  - npm run lint

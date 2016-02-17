@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "no-unused-vars": [2, {
+      "vars": "all",
+      "args": "after-used",
+      "argsIgnorePattern": "^t$"
+    }],
+    "id-length": [2, {
+      "min": 2,
+      "properties": "never",
+      "exceptions": ["$", "_", "t"]
+    }]
+  }
+}
