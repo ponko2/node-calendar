@@ -19,7 +19,7 @@ export default class Calendar {
   constructor(date, format) {
     if (!date) {
       this.date = moment();
-    } if (!format) {
+    } else if (!format) {
       this.date = moment(date);
     } else {
       this.date = moment(date, format);
