@@ -1,7 +1,7 @@
 {
   "name": "@ponko2/calendar",
   "description": "Calendar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Takahito Nakano",
   "dependencies": {
     "holiday-jp": "^0.1.0",
