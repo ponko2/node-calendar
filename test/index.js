@@ -154,16 +154,16 @@ test('月初かをチェック', t => {
   const startOfTheMonth = new Calendar('2016-01-01T00:00:00+09:00');
   const endOfTheMonth   = new Calendar('2016-01-31T23:59:59+09:00');
 
-  t.ok(startOfTheMonth.isStartOfTheMonth());
-  t.notOk(endOfTheMonth.isStartOfTheMonth(), '月末は月初ではない');
+  t.truthy(startOfTheMonth.isStartOfTheMonth());
+  t.falsy(endOfTheMonth.isStartOfTheMonth(), '月末は月初ではない');
 });
 
 test('月末かをチェック', t => {
   const startOfTheMonth = new Calendar('2016-01-01T00:00:00+09:00');
   const endOfTheMonth   = new Calendar('2016-01-31T23:59:59+09:00');
 
-  t.ok(endOfTheMonth.isEndOfTheMonth());
-  t.notOk(startOfTheMonth.isEndOfTheMonth(), '月初は月末ではない');
+  t.truthy(endOfTheMonth.isEndOfTheMonth());
+  t.falsy(startOfTheMonth.isEndOfTheMonth(), '月初は月末ではない');
 });
 
 test('休祝日かをチェック', t => {
@@ -172,10 +172,10 @@ test('休祝日かをチェック', t => {
   const holiday  = new Calendar('2016-01-11T09:00:00+09:00');
   const weekday  = new Calendar('2016-01-04T09:00:00+09:00');
 
-  t.ok(saturday.isHoliday());
-  t.ok(sunday.isHoliday());
-  t.ok(holiday.isHoliday());
-  t.notOk(weekday.isHoliday());
+  t.truthy(saturday.isHoliday());
+  t.truthy(sunday.isHoliday());
+  t.truthy(holiday.isHoliday());
+  t.falsy(weekday.isHoliday());
 });
 
 test('平日かをチェック', t => {
@@ -184,8 +184,8 @@ test('平日かをチェック', t => {
   const holiday  = new Calendar('2016-01-11T09:00:00+09:00');
   const weekday  = new Calendar('2016-01-04T09:00:00+09:00');
 
-  t.ok(weekday.isWeekday());
-  t.notOk(saturday.isWeekday());
-  t.notOk(sunday.isWeekday());
-  t.notOk(holiday.isWeekday());
+  t.truthy(weekday.isWeekday());
+  t.falsy(saturday.isWeekday());
+  t.falsy(sunday.isWeekday());
+  t.falsy(holiday.isWeekday());
 });
