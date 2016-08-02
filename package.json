@@ -4,7 +4,7 @@
   "version": "0.1.2",
   "author": "Takahito Nakano",
   "dependencies": {
-    "holiday-jp": "^0.1.0",
+    "holiday-jp": "^1.0.0",
     "moment-timezone": "^0.5.4"
   },
   "devDependencies": {
