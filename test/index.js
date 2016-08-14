@@ -3,7 +3,7 @@ import sinon    from 'sinon';
 import moment   from 'moment-timezone';
 import Calendar from '../lib';
 
-test('引数なしの初期化', t => {
+test('引数なしの初期化', (t) => {
   const expected = '2016-01-01T09:10:00+09:00';
   const clock    = sinon.useFakeTimers(moment(expected).valueOf());
   const calendar = new Calendar();
@@ -13,21 +13,21 @@ test('引数なしの初期化', t => {
   clock.restore();
 });
 
-test('日付を指定した初期化', t => {
+test('日付を指定した初期化', (t) => {
   const expected = '2016-01-01T09:10:00+09:00';
   const calendar = new Calendar(expected);
 
   t.is(calendar.format(), expected);
 });
 
-test('日付とフォーマットを指定した初期化', t => {
+test('日付とフォーマットを指定した初期化', (t) => {
   const expected = '2016-01-01T00:00:00+09:00';
   const calendar = new Calendar('2016/01/01', 'YYYY/MM/DD');
 
   t.is(calendar.format(), expected);
 });
 
-test('今日の0時を返す', t => {
+test('今日の0時を返す', (t) => {
   const expected = '2016-01-01T00:00:00+09:00';
   const now      = '2016-01-01T08:15:45+09:00';
   const calendar = new Calendar(now);
@@ -36,7 +36,7 @@ test('今日の0時を返す', t => {
   t.is(calendar.format(), now, '現在日時を上書きしない');
 });
 
-test('明日の0時を返す', t => {
+test('明日の0時を返す', (t) => {
   const expected = '2016-01-02T00:00:00+09:00';
   const now      = '2016-01-01T08:15:45+09:00';
   const calendar = new Calendar(now);
@@ -45,7 +45,7 @@ test('明日の0時を返す', t => {
   t.is(calendar.format(), now, '現在日時を上書きしない');
 });
 
-test('昨日の0時を返す', t => {
+test('昨日の0時を返す', (t) => {
   const expected = '2016-01-01T00:00:00+09:00';
   const now      = '2016-01-02T08:15:45+09:00';
   const calendar = new Calendar(now);
@@ -54,7 +54,7 @@ test('昨日の0時を返す', t => {
   t.is(calendar.format(), now, '現在日時を上書きしない');
 });
 
-test('今日の曜日を返す', t => {
+test('今日の曜日を返す', (t) => {
   const monday    = new Calendar('2016-02-01T00:00:00+09:00');
   const tuesday   = new Calendar('2016-02-02T00:00:00+09:00');
   const wednesday = new Calendar('2016-02-03T00:00:00+09:00');
@@ -72,7 +72,7 @@ test('今日の曜日を返す', t => {
   t.is(sunday.dayOfWeek(), '日');
 });
 
-test('月初の日時を返す', t => {
+test('月初の日時を返す', (t) => {
   const expected = '2016-01-01T00:00:00+09:00';
   const now      = '2016-01-15T09:05:12+09:00';
   const calendar = new Calendar(now);
@@ -81,7 +81,7 @@ test('月初の日時を返す', t => {
   t.is(calendar.format(), now, '現在日時を上書きしない');
 });
 
-test('月末の日時を返す', t => {
+test('月末の日時を返す', (t) => {
   const expected = '2016-01-31T23:59:59+09:00';
   const now      = '2016-01-15T09:05:12+09:00';
   const calendar = new Calendar(now);
@@ -90,7 +90,7 @@ test('月末の日時を返す', t => {
   t.is(calendar.format(), now, '現在日時を上書きしない');
 });
 
-test('次の休祝日を返す', t => {
+test('次の休祝日を返す', (t) => {
   const previousSaturday = '2016-01-16T00:00:00+09:00';
   const now              = '2016-01-17T09:05:12+09:00';
   const tomorrow         = '2016-01-18T00:00:00+09:00';
@@ -105,7 +105,7 @@ test('次の休祝日を返す', t => {
   t.is(calendar.format(), now, '現在日時を上書きしない');
 });
 
-test('前の休祝日を返す', t => {
+test('前の休祝日を返す', (t) => {
   const sunday          = '2016-01-17T00:00:00+09:00';
   const yesterday       = '2016-01-18T00:00:00+09:00';
   const now             = '2016-01-19T09:05:12+09:00';
@@ -120,7 +120,7 @@ test('前の休祝日を返す', t => {
   t.is(calendar.format(), now, '現在日時を上書きしない');
 });
 
-test('次の平日を返す', t => {
+test('次の平日を返す', (t) => {
   const friday      = '2016-01-15T00:00:00+09:00';
   const now         = '2016-01-16T09:05:12+09:00';
   const tomorrow    = '2016-01-17T00:00:00+09:00';
@@ -135,7 +135,7 @@ test('次の平日を返す', t => {
   t.is(calendar.format(), now, '現在日時を上書きしない');
 });
 
-test('前の平日を返す', t => {
+test('前の平日を返す', (t) => {
   const friday          = '2016-01-15T00:00:00+09:00';
   const yesterday       = '2016-01-16T00:00:00+09:00';
   const now             = '2016-01-17T09:05:12+09:00';
@@ -150,7 +150,7 @@ test('前の平日を返す', t => {
   t.is(calendar.format(), now, '現在日時を上書きしない');
 });
 
-test('月初かをチェック', t => {
+test('月初かをチェック', (t) => {
   const startOfTheMonth = new Calendar('2016-01-01T00:00:00+09:00');
   const endOfTheMonth   = new Calendar('2016-01-31T23:59:59+09:00');
 
@@ -158,7 +158,7 @@ test('月初かをチェック', t => {
   t.falsy(endOfTheMonth.isStartOfTheMonth(), '月末は月初ではない');
 });
 
-test('月末かをチェック', t => {
+test('月末かをチェック', (t) => {
   const startOfTheMonth = new Calendar('2016-01-01T00:00:00+09:00');
   const endOfTheMonth   = new Calendar('2016-01-31T23:59:59+09:00');
 
@@ -166,7 +166,7 @@ test('月末かをチェック', t => {
   t.falsy(startOfTheMonth.isEndOfTheMonth(), '月初は月末ではない');
 });
 
-test('休祝日かをチェック', t => {
+test('休祝日かをチェック', (t) => {
   const saturday = new Calendar('2016-01-02T09:00:00+09:00');
   const sunday   = new Calendar('2016-01-03T09:00:00+09:00');
   const holiday  = new Calendar('2016-01-11T09:00:00+09:00');
@@ -178,7 +178,7 @@ test('休祝日かをチェック', t => {
   t.falsy(weekday.isHoliday());
 });
 
-test('平日かをチェック', t => {
+test('平日かをチェック', (t) => {
   const saturday = new Calendar('2016-01-02T09:00:00+09:00');
   const sunday   = new Calendar('2016-01-03T09:00:00+09:00');
   const holiday  = new Calendar('2016-01-11T09:00:00+09:00');
