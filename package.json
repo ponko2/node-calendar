@@ -15,7 +15,7 @@
     "eslint": "^3.3.0",
     "eslint-config-ponko2": "^10.0.0",
     "eslint-plugin-ava": "^4.0.0",
-    "sinon": "^1.17.4"
+    "sinon": "^2.0.0"
   },
   "files": [
     "lib"
