@@ -1,7 +1,7 @@
-import moment  from 'moment-timezone';
+import moment from 'moment-timezone';
 import holiday from 'holiday-jp';
 
-const locale   = 'ja';
+const locale = 'ja';
 const timezone = 'Asia/Tokyo';
 
 // Moment.jsの言語設定
@@ -68,7 +68,9 @@ export default class Calendar {
    * @returns {object} 明日
    */
   tomorrow() {
-    const tomorrow = this.today().getMoment().add(1, 'day');
+    const tomorrow = this.today()
+      .getMoment()
+      .add(1, 'day');
     return new this.constructor(tomorrow);
   }
 
@@ -78,7 +80,9 @@ export default class Calendar {
    * @returns {object} 昨日
    */
   yesterday() {
-    const yesterday = this.today().getMoment().subtract(1, 'day');
+    const yesterday = this.today()
+      .getMoment()
+      .subtract(1, 'day');
     return new this.constructor(yesterday);
   }
 
@@ -178,7 +182,9 @@ export default class Calendar {
    */
   isHoliday() {
     const date = this.today().getMoment();
-    return holiday.isHoliday(date.toDate()) || date.day() === 0 || date.day() === 6;
+    return (
+      holiday.isHoliday(date.toDate()) || date.day() === 0 || date.day() === 6
+    );
   }
 
   /**
@@ -196,7 +202,7 @@ export default class Calendar {
    * @returns {boolean} 月初のときtrue
    */
   isStartOfTheMonth() {
-    const today           = this.today().getMoment();
+    const today = this.today().getMoment();
     const startOfTheMonth = this.startOfTheMonth().getMoment();
     return today.isSame(startOfTheMonth, 'day');
   }
@@ -207,7 +213,7 @@ export default class Calendar {
    * @returns {boolean} 月末のときtrue
    */
   isEndOfTheMonth() {
-    const today         = this.today().getMoment();
+    const today = this.today().getMoment();
     const endOfTheMonth = this.endOfTheMonth().getMoment();
     return today.isSame(endOfTheMonth, 'day');
   }
